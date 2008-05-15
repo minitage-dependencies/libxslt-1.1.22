@@ -1,6 +1,5 @@
 import os
 import re
-import zc.buildout
 myos=os.uname()[0]
 
 def libxslt(options,buildout):
@@ -15,7 +14,7 @@ def libxslt(options,buildout):
         if line[:17] == 'PYTHON_INCLUDES =':
             lines[i]='PYTHON_INCLUDES = %s/python2.5\n' % buildout['python2.5']['include']
         if line[:16] == 'PYTHON_VERSION =':
-            lines[i]='PYTHON_VERSION = 2.5\n' 
+            lines[i]='PYTHON_VERSION = 2.5\n'
         if line[:9] == 'LDFLAGS =':
             lines[i]=re.sub('2.4','2.5',line)
     file=open('/'.join((os.getcwd(),'python','Makefile')),'w+')
@@ -27,7 +26,5 @@ def libxslt(options,buildout):
     os.system('make install')
     os.chdir(pwd)
     return None
-
-
 
 # vim:set ts=4 sts=4 et  :
