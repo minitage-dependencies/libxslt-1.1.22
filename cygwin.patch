@@ -1,0 +1,48 @@
+diff -ur libxslt-1.1.22/libexslt/Makefile.in libxslt-1.1.22.new/libexslt/Makefile.in
+--- libxslt-1.1.22/libexslt/Makefile.in	2007-08-23 17:22:57.000000000 +0200
++++ libxslt-1.1.22.new/libexslt/Makefile.in	2010-01-22 14:25:11.006481900 +0100
+@@ -270,7 +270,7 @@
+ 	dynamic.c
+ 
+ libexslt_la_LIBADD = $(top_builddir)/libxslt/libxslt.la $(EXTRA_LIBS)
+-libexslt_la_LDFLAGS = -version-info @LIBEXSLT_VERSION_INFO@ $(LIBGCRYPT_LIBS)
++libexslt_la_LDFLAGS = -version-info @LIBEXSLT_VERSION_INFO@ -no-undefined $(LIBGCRYPT_LIBS)
+ man_MANS = libexslt.3
+ EXTRA_DIST = $(man_MANS)
+ all: all-am
+diff -ur libxslt-1.1.22/libxslt/Makefile.in libxslt-1.1.22.new/libxslt/Makefile.in
+--- libxslt-1.1.22/libxslt/Makefile.in	2007-08-23 17:22:57.000000000 +0200
++++ libxslt-1.1.22.new/libxslt/Makefile.in	2010-01-22 14:24:51.210113700 +0100
+@@ -294,7 +294,7 @@
+ 	libxslt.h
+ 
+ libxslt_la_LIBADD = $(EXTRA_LIBS)
+-libxslt_la_LDFLAGS = -version-info @LIBXSLT_VERSION_INFO@
++libxslt_la_LDFLAGS = -version-info @LIBXSLT_VERSION_INFO@ -no-undefined
+ man_MANS = libxslt.3
+ EXTRA_DIST = $(man_MANS) trio.h triodef.h
+ all: all-am
+diff -ur libxslt-1.1.22/python/Makefile.in libxslt-1.1.22.new/python/Makefile.in
+--- libxslt-1.1.22/python/Makefile.in	2007-08-23 17:22:57.000000000 +0200
++++ libxslt-1.1.22.new/python/Makefile.in	2010-01-22 14:26:19.379731500 +0100
+@@ -268,7 +268,7 @@
+ 	libxslt-python-api.xml	\
+ 	$(DOCS)
+ 
+-libxsltmod_la_LDFLAGS = -module -avoid-version
++libxsltmod_la_LDFLAGS = -module -avoid-version -no-undefined
+ @WITH_PYTHON_TRUE@mylibs = \
+ @WITH_PYTHON_TRUE@	$(top_builddir)/libxslt/libxslt.la \
+ @WITH_PYTHON_TRUE@	$(top_builddir)/libexslt/libexslt.la
+diff -ur libxslt-1.1.22/xsltproc/Makefile.in libxslt-1.1.22.new/xsltproc/Makefile.in
+--- libxslt-1.1.22/xsltproc/Makefile.in	2007-08-23 17:23:01.000000000 +0200
++++ libxslt-1.1.22.new/xsltproc/Makefile.in	2010-01-22 14:27:47.002488300 +0100
+@@ -236,7 +236,7 @@
+ 
+ AM_CFLAGS = $(LIBGCRYPT_CFLAGS)
+ xsltproc_SOURCES = xsltproc.c
+-xsltproc_LDFLAGS = 
++xsltproc_LDFLAGS = -no-undefined
+ xsltproc_DEPENDENCIES = $(DEPS)
+ DEPS = $(top_builddir)/libxslt/libxslt.la \
+ 	$(top_builddir)/libexslt/libexslt.la 
